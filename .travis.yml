@@ -1,0 +1,21 @@
+sudo: required
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+before_install:
+  - docker --version
+  - docker build -q -t vfac/envdevjs:7.2-fpm .
+  - docker run --name test -d -v $PWD:/var/www/html vfac/envdevjs:7.2-fpm
+
+script:
+  - docker exec test node --version
+  - docker exec test npm --version
+  - docker exec test grunt --version
+  - docker exec test gulp --version
+  - docker exec test yarn --version
