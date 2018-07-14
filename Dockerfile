@@ -1,4 +1,4 @@
-FROM vfac/envdevphpbase:7.2-fpm
+FROM vfac/envdevphpbase:7.1-fpm
 LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
 USER root
