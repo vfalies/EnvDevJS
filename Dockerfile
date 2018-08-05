@@ -24,4 +24,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && apt-get update && apt-get install --no-install-recommends yarn \
     && rm -rf /var/lib/apt/lists/*
 
+# Typescript
+RUN npm install -g typescript
+
 USER vfac:vfac
