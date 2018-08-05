@@ -19,3 +19,4 @@ script:
   - docker exec test grunt --version
   - docker exec test gulp --version
   - docker exec test yarn --version
+  - docker exec test tsc --version

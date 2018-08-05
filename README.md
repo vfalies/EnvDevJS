@@ -14,4 +14,4 @@ The utlisation outside this project is naturally possible.
 - Grunt
 - Gulp
 - Yarn
-
+- Typescript
