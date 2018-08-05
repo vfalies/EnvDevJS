@@ -25,6 +25,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update && apt-get install --no-install-recommends yarn
 
+# Typescript
+RUN npm install -g typescript
+
 # User creation
 RUN useradd -U -m -r -o -u 1003 vfac
 
