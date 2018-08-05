@@ -25,4 +25,7 @@ RUN npm install -g grunt-cli
 RUN npm install -g gulp-cli \
     && npm install gulp -D
 
+# Typescript
+RUN npm install -g typescript
+
 USER vfac:vfac
