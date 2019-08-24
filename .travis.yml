@@ -10,8 +10,8 @@ addons:
 
 before_install:
   - docker --version
-  - docker build -q -t vfac/envdevjs:7.2-fpm .
-  - docker run --name test -d -v $PWD:/var/www/html vfac/envdevjs:7.2-fpm
+  - docker build -q -t vfac/envdevjs .
+  - docker run --name test -d -v $PWD:/var/www/html vfac/envdevjs
 
 script:
   - docker exec test node --version
