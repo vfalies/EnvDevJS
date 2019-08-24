@@ -1,12 +1,10 @@
-FROM debian:buster-slim
+FROM vfac/envdevphpbase:7.3-fpm
 LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
-RUN apt-get update && apt-get install -y \
-    gnupg2 \
-    curl
+USER root
 
 # Node JS
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs build-essential \
     && rm -rf /var/lib/apt/lists/*
 
@@ -23,8 +21,9 @@ RUN npm install -g gulp-cli \
 # Yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update && apt-get install --no-install-recommends yarn
-
+    && apt-get update && apt-get install --no-install-recommends yarn \
+    && rm -rf /var/lib/apt/lists/*
+    
 # Typescript
 RUN npm install -g typescript
 
@@ -42,5 +41,3 @@ RUN USER=vfac && \
 ENTRYPOINT ["fixuid", "-q"]
 
 USER vfac:vfac
-
-CMD ["tail", "-f", "/dev/null"]
