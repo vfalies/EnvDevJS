@@ -3,10 +3,17 @@ LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
 USER root
 
-# Node JS
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y nodejs build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# NodeJS, NPM, Yarn
+RUN apk --update add ca-certificates && \
+     echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+     echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+     apk add --no-cache $PHPIZE_DEPS && \
+     apk add -U \
+        bash@edge-main \
+        nodejs@edge-main \
+        nodejs-npm@edge-main \
+        yarn@edge-main \
+     && rm -rf /var/cache/apk/*
 
 # NPM last version
 RUN npm i npm@latest -g
@@ -17,12 +24,6 @@ RUN npm install -g grunt-cli
 # Gulp
 RUN npm install -g gulp-cli \
     && npm install gulp -D
-
-# Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update && apt-get install --no-install-recommends yarn \
-    && rm -rf /var/lib/apt/lists/*
 
 # Typescript
 RUN npm install -g typescript
