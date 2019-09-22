@@ -4,7 +4,7 @@ LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 USER root
 
 # Node JS
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt-get install -y nodejs build-essential \
     && rm -rf /var/lib/apt/lists/*
 
