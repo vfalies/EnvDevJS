@@ -1,0 +1,12 @@
+name: Docker Image CI EnvDevJS
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build the Docker image EnvDevJS
+        run: docker build . --file Dockerfile --tag vfac/envdevjs
