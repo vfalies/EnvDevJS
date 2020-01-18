@@ -7,7 +7,7 @@ The utlisation outside this project is naturally possible.
 
 ## JS Tools
 
-5 globals JS tools are available throught this container :
+6 globals JS tools are available throught this container :
 
 - NodeJS
 - NPM
