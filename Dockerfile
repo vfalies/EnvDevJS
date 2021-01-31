@@ -1,10 +1,10 @@
-FROM vfac/envdevphpbase:7.3-fpm
+FROM vfac/envdevphpbase:8.0-fpm
 LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
 USER root
 
 # Node JS
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && apt-get install -y nodejs build-essential \
     && rm -rf /var/lib/apt/lists/*
 
